@@ -1,0 +1,87 @@
+/* centering the grid */
+#game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+/* desigining the cells */
+.grid-cell {
+    border: 1px solid #000;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+
+/* removing top border */
+.grid-cell:nth-child(-n +3) {
+    border-top: none;
+}
+
+/* removing left border */
+.grid-cell:nth-child(3n +1) {
+    border-left: none;
+}
+
+/* removing right border */
+.grid-cell:nth-child(3n +3) {
+    border-right: none;
+}
+
+/* removing bottom border */
+.grid-cell:nth-last-of-type(-n +3) {
+    border-bottom: none;
+}
+
+/* when x class added add the x */
+.x::after {
+    content: '❌ ';
+}
+
+/* when o class added add the 0 */
+.o::after {
+    content: '⭕';
+}
+
+/* after click remove cursor */
+.disabled {
+    cursor: not-allowed;
+}
+
+/* cells that arent disabled change background color on hover */
+.grid-cell:not(.disabled):hover {
+    background: #eee;
+}
+
+/* styling game-over div */ 
+.game-over {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate((-50%, -50%));
+    box-shadow: rgb(0 0 0 / 50%) 0 0 0 9999px;
+}
+
+/* styling game over text */
+.game-over-text {
+    position: absolute;
+    top: -200px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    transform: translateX(-30%)
+}
+
+/* when added the div will show up */
+.visible {
+    display: block;
+}
